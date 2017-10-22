@@ -7,6 +7,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { HttpModule } from '@angular/http';
+import { DataService } from './services/data.service';
 
 // Create routes
 const appRoutes: Routes = [
@@ -23,9 +25,10 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
