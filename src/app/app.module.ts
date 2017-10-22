@@ -12,7 +12,7 @@ import { DataService } from './services/data.service';
 
 // Create routes
 const appRoutes: Routes = [
-  {path:'', component:HomeComponent}
+  {path:'', component:HomeComponent},
 ]
 
 @NgModule({
