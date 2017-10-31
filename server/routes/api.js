@@ -43,7 +43,7 @@ router.get('/users', (req, res) => {
     })
 })
 
-// Add a user
+// Add/register a user
 router.post('/users', (req, res) => {
     var newUser = req.body;
 
