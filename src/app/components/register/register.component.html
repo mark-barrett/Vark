@@ -1,32 +1,34 @@
 <h3>Come Join The Fun!</h3>
 <div class="card">
   <div class="card-body">
-    <form (ngSubmit)="register()">
-      <div class="form-group">
-        <label for="email_address">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="emailAddress">
-        <small id="email_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input type="text" class="form-control" id="first_name" placeholder="Enter your first name" name="firstName">
+      <form (submit)="registerUser()">
+          <div class="form-group">            
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" [(ngModel)]="email" name="email">
+            <small id="email_help" class="form-text text-muted">We'll never share your email with anyone else.</small>  
+            
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" id="last_name" placeholder="Enter your last name" name="lastName">
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label for="name">First Name:</label>
+                    <input type="text" class="form-control" [(ngModel)]="firstName" name="firstName">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    
+                    <label for="name">Last Name:</label>
+                    <input type="text" class="form-control" [(ngModel)]="lastName" name="lastName">
+                </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password" name="lastName">
-      </div>
-      <input type="submit" class="btn btn-primary" value="submit">
-    </form>
+          <div class="form-group">
+              <label for="name">Password:</label>
+              <input type="password" class="form-control" [(ngModel)]="password" name="password">
+          </div>
+          <input type="submit" class="btn btn-primary" value="Register">
+      </form>
   </div>
 </div>
-
