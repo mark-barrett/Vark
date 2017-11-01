@@ -10,10 +10,12 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpModule } from '@angular/http';
 import { DataService } from './services/data.service';
+import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 
 // Create routes
 const appRoutes: Routes = [
   {path:'', component:HomeComponent},
+  {path:'news-feed', component:NewsFeedComponent}
 ]
 
 @NgModule({
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     RegisterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    NewsFeedComponent
   ],
   imports: [
     BrowserModule,

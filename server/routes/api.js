@@ -41,7 +41,7 @@ router.get('/users', (req, res) => {
             sendError(err, res);
         });
     })
-})
+});
 
 // Add/register a user
 router.post('/users', (req, res) => {
@@ -56,6 +56,22 @@ router.post('/users', (req, res) => {
             }
         })
     })
-})
+});
+
+// Find user end point in order to check if the user exists
+router.get('/users/:email', (req, res) => {
+    connection((db) => {
+        db.collection('users')
+        .findOne({ email: req.params.email })
+        .then((user) => {
+            response.data = user;
+            res.json(response);
+        })
+        .catch((err) => {
+            sendError(err, res);
+        });
+
+    })
+});
 
 module.exports = router;

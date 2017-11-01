@@ -33,4 +33,10 @@ export class DataService {
     .subscribe();
   }
 
+  getUser(user:User) {
+    var url = "/api/users/"+user.email;
+    return this._http.get(url)
+    .map(result => this.result = result.json().data);
+  }
+
 }
