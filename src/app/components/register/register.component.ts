@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
         this.userExists = true;
         this.userError = true;
       }
-   }
+    }
    
    // Now we can register the user if they don't exist using the data service.
    if(!this.userExists) {
@@ -64,9 +64,11 @@ export class RegisterComponent implements OnInit {
 
      // Set a session variable to get user data and proove they are logged in
      sessionStorage.setItem("user", this.user.email);
-     
+
      // Now redirect to the news feed.
      this.router.navigate(['/news-feed']);
+   } else {
+     alert("A user with that email already exists. Choose another or try again.");
    }
    this.userExists = false;
   }

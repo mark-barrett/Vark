@@ -15,11 +15,8 @@ export class NewsFeedComponent implements OnInit {
 
     if(this.user == null) {
       // Set for error message
-      sessionStorage.setItem("notAuthenticated", 'True');
+      alert("You must be logged in to view that!");
       this.router.navigate(['/']);
-    } else {
-      // Delete if logged in or accessed fairly
-      sessionStorage.removeItem("notAuthenticated");
     }
     // End Authentication Code
 
