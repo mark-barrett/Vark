@@ -173,4 +173,19 @@ router.get('/friends/:id', (req, res) => {
     })
 });
 
+// Add a friend
+router.post('/friends', (req, res) => {
+    var newFriendship = req.body;
+
+    connection((db) => {
+        db.collection('friends').insertOne(newFriendship, {upsert:true}, (err, doc) => {
+            if(err) {
+                console.log("Cannot add post");
+            } else {
+                res.redirect('/');
+            }
+        })
+    })
+});
+
 module.exports = router;
