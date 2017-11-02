@@ -37,9 +37,6 @@ export class FriendsComponent implements OnInit {
   // Found users
   foundUsers:Array<any> = [];
 
-  // Temp user
-  tempUser:User;
-
   constructor(public dataService:DataService, public postService:PostService, private router: Router) { 
     
   // Start Authentication Code
@@ -94,7 +91,10 @@ export class FriendsComponent implements OnInit {
       // If the first name contains the search or the last name
       if(this.users[i].firstName.toLowerCase().indexOf(this.friendSearch.toLowerCase()) >= 0
       || this.users[i].lastName.toLowerCase().indexOf(this.friendSearch.toLocaleLowerCase()) >= 0) {
-        this.foundUsers.push(this.users[i]);
+        
+        if(this.users[i].email != sessionStorage.getItem("user")) {
+          this.foundUsers.push(this.users[i]);
+        }
       }
     }
   }

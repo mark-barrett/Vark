@@ -47,8 +47,23 @@
   <br/><br/>
   <div *ngIf="foundUsers.length > 0">
       Search Results:
-      <div *ngFor="let friend in foundUsers">
-
+      <hr/>
+      <div *ngFor="let friend of foundUsers">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                  <img src="{{friend.profile}}" width="100%" style="border-radius: 5px; margin-bottom: 5px;" />
+              </div>
+              <div class="col-md-10">
+                <p>{{friend.firstName}} {{friend.lastName}}<br/>
+                <small>{{friend.about}}</small></p>
+                <a href="/user/{{friend._id}}" class="btn btn-secondary">View Profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
       </div>
   </div>
   <hr/>

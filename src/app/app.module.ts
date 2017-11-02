@@ -15,6 +15,7 @@ import { PostService } from './services/post.service';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { FriendsComponent } from './components/friends/friends.component';
+import { UserComponent } from './components/user/user.component';
 
 // Create routes
 const appRoutes: Routes = [
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     NewsFeedComponent,
     LogoutComponent,
     ProfileComponent,
-    FriendsComponent
+    FriendsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
