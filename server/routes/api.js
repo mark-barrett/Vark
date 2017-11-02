@@ -131,10 +131,46 @@ router.get('/posts/:email', (req, res) => {
 });
 
 
+// Find another user (not the current one) by id
+router.get('/usersanon/:id', (req, res) => {
+    connection((db) => {
+        db.collection('users')
+        .findOne({ _id: new ObjectID(req.params.id) })
+        .then((user) => {
+            response.data = user;
+            res.json(response);
+        })
+        .catch((err) => {
+            sendError(err, res);
+        });
+
+    })
+});
 
 /*
     The following endpoints are for friendships. Create a friendship and get a users friends.
 */
 
+// Get users
+router.get('/friends/:id', (req, res) => {
+    connection((db) => {
+        db.collection('friends')
+        .find({
+            "$or": [{
+                "friend1": req.params.id
+            }, {
+                "friend2": req.params.id
+            }]
+        })
+        .toArray()
+        .then((users) => {
+            response.data = users;
+            res.json(response);
+        })
+        .catch((err) => {
+            sendError(err, res);
+        });
+    })
+});
 
 module.exports = router;

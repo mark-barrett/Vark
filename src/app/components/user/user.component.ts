@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { DataService } from '../../services/data.service';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-user',
@@ -15,10 +17,17 @@ export class UserComponent implements OnInit {
   // Hold specified user id
   user:string;
 
+  // The user object that was retrieved after giving the id
+  userObj:any;
+
   // Property for the subscription to get parameter
   private sub:any;
 
-  constructor(private router: Router, private route: ActivatedRoute) { 
+  // Users posts
+  userPosts:Array<any>;
+
+  constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService,
+    private postService: PostService) { 
     // Start Authentication Code
     this.loggedInUser = sessionStorage.getItem("user");
     
@@ -31,10 +40,31 @@ export class UserComponent implements OnInit {
 
     // Get the users id from the parameter
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
-
+      this.user = params['id']; // (+) converts string 'id' to a number
       // In a real app: dispatch action to load the details here.
    });
+
+   // Check to see if the logged in user is trying to find their profile and if so send them there
+   if(this.user == sessionStorage.getItem("user")) {
+     this.router.navigate(['/profile']);
+   }
+
+   // Now lets get that user
+   this.getUser();
+  }
+
+  getUser() {
+    // Get the user based on the sessionStorage
+    this.dataService.getAnonymousUser(this.user)
+    .subscribe(res => {
+      this.userObj = res;
+
+      // While we are asynchronous we may aswell grab the posts too!
+      this.postService.getUserPosts(this.userObj["email"])
+      .subscribe(res => {
+        this.userPosts = res;
+      })
+    });
   }
 
   ngOnInit() {

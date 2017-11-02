@@ -26,6 +26,15 @@ export class DataService {
     });
   }
 
+  // Get a user that isn't the currently logged in user.
+  getAnonymousUser(id:string) {
+    var url = "/api/usersanon/"+id;
+    return this._http.get(url)
+    .map(result => {
+      return result.json().data;
+    });
+  }
+
   registerUser(user:User) {
     // Convert the user object to JSON
     let body = JSON.stringify(user);
@@ -46,7 +55,7 @@ export class DataService {
     let body = JSON.stringify(user);
 
     console.log(body);
-    
+
     /* Create the headers to tell the API we are using
     JSON */
     let headers = new Headers({'Content-Type': 'application/json'});
