@@ -64,10 +64,10 @@ export class AddFriendComponent implements OnInit {
         // Create the friendship object
         this.friendRelationship = {
           friend1: this.user["_id"],
-          friend1Name: this.user["firstName"]+""+this.user["lastName"],
+          friend1Name: this.user["firstName"]+" "+this.user["lastName"],
           friend1Profile: this.user["profile"],
           friend2: this.friendID,
-          friend2Name: this.friendUser["firstName"]+this.friendUser["lastName"],
+          friend2Name: this.friendUser["firstName"]+" "+this.friendUser["lastName"],
           friend2Profile: this.friendUser["profile"]
         }
 

@@ -178,7 +178,7 @@ router.post('/friends', (req, res) => {
     var newFriendship = req.body;
 
     connection((db) => {
-        db.collection('friends').insertOne(newFriendship, {upsert:true}, (err, doc) => {
+        db.collection('posts').insertOne(newFriendship, (err, doc) => {
             if(err) {
                 console.log("Cannot add post");
             } else {
