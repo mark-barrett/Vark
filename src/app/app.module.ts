@@ -23,7 +23,8 @@ const appRoutes: Routes = [
   {path:'news-feed', component:NewsFeedComponent},
   {path:'profile', component:ProfileComponent},
   {path:'logout', component:LogoutComponent},
-  {path:'friends', component:FriendsComponent}
+  {path:'friends', component:FriendsComponent},
+  {path:'user/:id', component:UserComponent}
 ]
 
 @NgModule({

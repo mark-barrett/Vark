@@ -39,15 +39,15 @@ export class FriendsComponent implements OnInit {
 
   constructor(public dataService:DataService, public postService:PostService, private router: Router) { 
     
-  // Start Authentication Code
-  this.user = sessionStorage.getItem("user");
+    // Start Authentication Code
+    this.user = sessionStorage.getItem("user");
 
-  if(this.user == null) {
-    // Set for error message
-    alert("You must be logged in to view that!");
-    this.router.navigate(['/']);
-  }
-  // End Authentication Code
+    if(this.user == null) {
+      // Set for error message
+      alert("You must be logged in to view that!");
+      this.router.navigate(['/']);
+    }
+    // End Authentication Code
 
   }
 
