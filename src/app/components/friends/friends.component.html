@@ -68,5 +68,43 @@
   </div>
   <hr/>
   <h4>Your Friends:</h4>
+  <div *ngIf="friendsFromDB">
+    <div *ngFor="let friend of friendsFromDB">
+
+      <!-- If the logged in user is the first friend, take the second friend-->
+      <div *ngIf="friend.friend1 == userID">
+          <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2">
+                      <img src="{{friend.friend2Profile}}" width="100%" style="border-radius: 5px; margin-bottom: 5px;" />
+                  </div>
+                  <div class="col-md-10">
+                    <p>{{friend.friend2Name}}<br/>
+                    <a href="/user/{{friend.friend2}}" class="btn btn-secondary">View Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+
+      <!-- If the logged in user is the second friend, take the first friend-->
+      <div *ngIf="friend.friend2 == userID">
+          <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2">
+                      <img src="{{friend.friend1Profile}}" width="100%" style="border-radius: 5px; margin-bottom: 5px;" />
+                  </div>
+                  <div class="col-md-10">
+                    <p>{{friend.friend1Name}}<br/>
+                    <a href="/user/{{friend.friend1}}" class="btn btn-secondary">View Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
