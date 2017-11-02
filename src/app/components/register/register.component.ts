@@ -46,7 +46,9 @@ export class RegisterComponent implements OnInit {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
-      password: this.password
+      password: this.password,
+      currentThought: "",
+      about: "Nothing yet"
     }
 
     /* We have all the users now we need to loop through them and check
@@ -65,6 +67,9 @@ export class RegisterComponent implements OnInit {
      // Set a session variable to get user data and proove they are logged in
      sessionStorage.setItem("user", this.user.email);
 
+     // Alert the user
+     alert("You have registered successfully and will now be logged in");
+     
      // Now redirect to the news feed.
      this.router.navigate(['/news-feed']);
    } else {

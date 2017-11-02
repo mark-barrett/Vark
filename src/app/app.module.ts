@@ -10,12 +10,15 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpModule } from '@angular/http';
 import { DataService } from './services/data.service';
+import { PostService } from './services/post.service';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 // Create routes
 const appRoutes: Routes = [
   {path:'', component:HomeComponent},
-  {path:'news-feed', component:NewsFeedComponent}
+  {path:'news-feed', component:NewsFeedComponent},
+  {path:'logout', component:LogoutComponent}
 ]
 
 @NgModule({
@@ -25,7 +28,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     LoginComponent,
-    NewsFeedComponent
+    NewsFeedComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,10 @@ const appRoutes: Routes = [
     HttpModule,
     FormsModule
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    PostService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
