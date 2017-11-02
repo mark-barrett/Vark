@@ -17,6 +17,7 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { UserComponent } from './components/user/user.component';
+import { AddFriendComponent } from './components/add-friend/add-friend.component';
 
 // Create routes
 const appRoutes: Routes = [
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   {path:'profile', component:ProfileComponent},
   {path:'logout', component:LogoutComponent},
   {path:'friends', component:FriendsComponent},
-  {path:'user/:id', component:UserComponent}
+  {path:'user/:id', component:UserComponent},
+  {path:'add-friend/:id', component:AddFriendComponent}
 ]
 
 @NgModule({
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     LogoutComponent,
     ProfileComponent,
     FriendsComponent,
-    UserComponent
+    UserComponent,
+    AddFriendComponent
   ],
   imports: [
     BrowserModule,
