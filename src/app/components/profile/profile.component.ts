@@ -36,6 +36,10 @@ export class ProfileComponent implements OnInit {
   // Current thought
   currentThought:string;
 
+  // Used for editing the profile
+  about:string;
+  profile:string;
+
   constructor(public dataService:DataService, public postService:PostService, private router: Router) { 
     
   // Start Authentication Code
@@ -98,12 +102,29 @@ export class ProfileComponent implements OnInit {
       email: this.dbUser["email"],
       password: this.dbUser["password"],
       profile: this.dbUser["profile"],
-      background: this.dbUser["background"],
       currentThought: this.currentThought,
       about: this.dbUser["about"],
     }
 
     this.result = this.dataService.updateUser(this.updatedUser);
+    alert("Current thought updated!");
+    this.getUser();
+  }
+
+  updateAccount() {
+    // Construct the user object.
+    this.updatedUser = {
+      firstName: this.dbUser["firstName"],
+      lastName: this.dbUser["lastName"],
+      email: this.dbUser["email"],
+      password: this.dbUser["password"],
+      profile: this.profile,
+      currentThought: this.dbUser["currentThought"],
+      about: this.about,
+    }
+
+    this.result = this.dataService.updateUser(this.updatedUser);
+    alert("Profile information updated!");
     this.getUser();
   }
 }

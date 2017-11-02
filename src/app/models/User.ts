@@ -4,7 +4,6 @@ export interface User {
     email:string;
     password:string;
     profile:string;
-    background:string;
     currentThought:string;
     about:string;
 }
