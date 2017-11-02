@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { HttpModule } from '@angular/http';
 import { DataService } from './services/data.service';
 import { PostService } from './services/post.service';
@@ -18,6 +19,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 const appRoutes: Routes = [
   {path:'', component:HomeComponent},
   {path:'news-feed', component:NewsFeedComponent},
+  {path:'profile', component:ProfileComponent},
   {path:'logout', component:LogoutComponent}
 ]
 
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     NewsFeedComponent,
-    LogoutComponent
+    LogoutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

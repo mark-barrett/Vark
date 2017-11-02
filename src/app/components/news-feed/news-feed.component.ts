@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class NewsFeedComponent implements OnInit {
 
+  user:string;
+
   constructor(private router: Router) { 
 
     // Start Authentication Code
@@ -21,8 +23,6 @@ export class NewsFeedComponent implements OnInit {
     // End Authentication Code
 
   }
-
-  user:string;
 
   ngOnInit() {
   }

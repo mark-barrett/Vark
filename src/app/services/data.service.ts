@@ -19,7 +19,7 @@ export class DataService {
   }
 
   registerUser(user:User) {
-    // Conver the user object to JSON
+    // Convert the user object to JSON
     let body = JSON.stringify(user);
     /* Create the headers to tell the API we are using
     JSON */
@@ -33,10 +33,12 @@ export class DataService {
     .subscribe();
   }
 
-  getUser(user:User) {
-    var url = "/api/users/"+user.email;
+  getUser(user:string) {
+    var url = "/api/users/"+user;
     return this._http.get(url)
-    .map(result => this.result = result.json().data);
+    .map(result => {
+      return result.json().data;
+    });
   }
 
 }

@@ -30,8 +30,8 @@ export class PostService {
   }
 
   // Get all posts based on user
-  getUserPosts(user:User) {
-    return this._http.get("/api/posts/"+user.email)
+  getUserPosts(user:string) {
+    return this._http.get("/api/posts/"+user)
     .map(result => this.result = result.json().data);
   }
 }

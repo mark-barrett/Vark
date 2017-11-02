@@ -1,79 +1,73 @@
 <br/>
-
-
-<div class="container">
- 
-    <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-          <a class="nav-link" href="">News Feed</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Friends</a>
-        </li>
-      </ul>
-  
+  <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <a class="nav-link" href="">News Feed</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Friends</a>
+      </li>
+    </ul>
 <br/>
-    <div class="row">
-        <div class="col-md-3">
-            <img src="https://pbs.twimg.com/profile_images/741182406397419520/b-VG1x12.jpg" width="100%" style="border-radius: 5px; margin-bottom: 5px;" />
-            <h3>vincent ogbe</h3>
-            <hr/>
+
+<div class="row">
+<div class="col-md-3">
+  <img src="{{dbUser.profile}}" width="100%" style="border-radius: 5px; margin-bottom: 5px;" />
+</div>
+<div class="col-md-9">
+
+  <div class="row">
+    <div class="col-md-3">
+      <!-- Purposely Empty -->
+    </div>
+
+    <div class="col-md-8" style="padding-top: 60px;">
+      <h2>{{dbUser.currentThought}}</h2>
+      <div class="card">
+        <div class="card-body">
+          Profile Views
         </div>
-         <div class="col-md-9">
-          
-          <div>
-          <div class="row">
-             <div class="col-md-3">
-             </div>
-                <div class="col-md-8" style="padding-top: 60px;">
-                   <h1 class="white">current thought </h1>
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col-md-6">
-                              <span class="btn btn-secondary btn-lg btn-block">profile views</span>
-                            </div>
-                              <div class="col-md-6">
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-                      <br/>
-                </div> 
-                <div class="col-md-1">
-                    
-                </div>
-                </div>
-                </div>
-                <br/>
-                <form (submit)="thought()">
-                     <h3>Update Current Thought </h3>
-                     <div class="card">
-                     <div class="card-body">
-                     <div class="form-group">
-                          <input type="text" class="form-control" placeholder="current thought ">
-                     </div>
-                      <div class="float-right">
-                            <input type="submit" value="Update Current Thought" class="btn btn-secondary btn-lg btn-block" />
-                        </div>
-                    </div>
-                </div>
-              </form>
-                <hr>
-                <br/>
-                <form (submit)="post()">
-                <div class="card">
-                    <div class="card-body">
-                      <input type="text" class="form-control"  placeholder="post">
-                      <br/>
-                      <div class="float-right">
-                      <a href="#" class="btn btn-secondary btn-lg btn-block">post</a>
-                      </div>
-                    </div>
-                  </div>
-                  </form>
-              </div>
-                
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+<div class="row">
+<div class="col-md-3">
+  <h3>{{dbUser.firstName}} {{dbUser.lastName}}</h3>
+</div>
+<div class="col-md-9">
+  <form (submit)="thought()">
+        <h4>Update Current Thought</h4>
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group">
+                 <input type="text" class="form-control" placeholder="current thought ">
+            </div>
+             <div class="float-right">
+                   <input type="submit" value="Update Current Thought" class="btn btn-secondary btn-block" />
+               </div>
+           </div>
+         </div>
+       </form>
+       <br/>
+       <h4>Make a Post</h4>
+       <form (submit)="post()">
+         <div class="card">
+           <div class="card-body">
+             <div class="form-group">
+                 <textarea class="form-control" placeholder="Make a post.."></textarea>
+            </div>
+            <div class="float-right">
+              <input type="submit" value="Post" class="btn btn-secondary">
+            </div>
+          </div>
+        </div>
+      </form>
+      <br/>
+      <h4>Your Posts:</h4>
+</div>
+</div>
