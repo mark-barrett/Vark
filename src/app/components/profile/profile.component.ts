@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/Post';
+import { User } from '../../models/User';
 
 import { Router } from '@angular/router';
 
@@ -29,6 +30,9 @@ export class ProfileComponent implements OnInit {
 
   result:any;
 
+  // Updated user
+  updatedUser:User;
+
   // Current thought
   currentThought:string;
 
@@ -47,12 +51,20 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Put in seperate methods so they can be called again
+    this.getUser();
+    this.getPosts();
+  }
+
+  getUser() {
     // Get the user based on the sessionStorage
     this.dataService.getUser(sessionStorage.getItem("user"))
     .subscribe(res => {
       this.dbUser = res;
     });
+  }
 
+  getPosts() {
     // Get the users posts
     this.postService.getUserPosts(sessionStorage.getItem("user"))
     .subscribe(res => {
@@ -74,10 +86,22 @@ export class ProfileComponent implements OnInit {
 
     // Notify the user.
     alert("Post created successfully");
-    this.router.navigate(['/profile']);
-
+    // Call posts again to update the list.
+    this.getPosts(); 
   }
 
+  thought() {
+    console.log(this.currentThought);
+    // Construct the user object.
+    this.updatedUser = {
+      firstName: this.dbUser["firstName"],
+      lastName: this.dbUser["lastName"],
+      email: this.dbUser["email"],
+      password: this.dbUser["password"],
+      currentThought: this.currentThought,
+      about: this.dbUser["about"],
+    }
 
-
+    console.log(this.updatedUser);
+  }
 }

@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
         }
       } 
+      // Its running this after every iteration. FIX IT!!
       else {
         alert("That user does not exist");
         this.router.navigate(['/']);

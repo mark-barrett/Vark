@@ -78,6 +78,22 @@ router.get('/users/:email', (req, res) => {
     })
 });
 
+// Update the users information
+router.post('/users/:email', (req, res) => {
+    var updatedUser = req.body;
+
+    connection((db) => {
+        db.collection('users')
+        .updateOne({ email: req.params.email }, updatedUser, (err, doc) => {
+            if(err) {
+                console.log(err);
+            } else {
+                res.redirect('/');
+            }
+        })
+    })
+})
+
 /*
     The following endpoints are for posts. Create a new posts. Get all of a users posts by email.
 */
