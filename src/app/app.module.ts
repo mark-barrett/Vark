@@ -14,13 +14,15 @@ import { DataService } from './services/data.service';
 import { PostService } from './services/post.service';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { FriendsComponent } from './components/friends/friends.component';
 
 // Create routes
 const appRoutes: Routes = [
   {path:'', component:HomeComponent},
   {path:'news-feed', component:NewsFeedComponent},
   {path:'profile', component:ProfileComponent},
-  {path:'logout', component:LogoutComponent}
+  {path:'logout', component:LogoutComponent},
+  {path:'friends', component:FriendsComponent}
 ]
 
 @NgModule({
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     LoginComponent,
     NewsFeedComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
+    FriendsComponent
   ],
   imports: [
     BrowserModule,

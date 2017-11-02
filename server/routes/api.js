@@ -133,40 +133,8 @@ router.get('/posts/:email', (req, res) => {
 
 
 /*
-    The following endpoints are for comments. Create a new comment. Get all comments based on the post.
+    The following endpoints are for friendships. Create a friendship and get a users friends.
 */
-
-// Add a post
-router.post('/comments', (req, res) => {
-    var newComment = req.body;
-
-    connection((db) => {
-        db.collection('comments').insertOne(newComment, (err, doc) => {
-            if(err) {
-                console.log("Cannot add comment");
-            } else {
-                res.redirect('/');
-            }
-        })
-    })
-});
-
-// Find all posts based on the user
-router.get('/comments/:post_id', (req, res) => {
-    connection((db) => {
-        db.collection('comments')
-        .find({ postId: req.params.post_id })
-        .toArray()
-        .then((comments) => {
-            response.data = comments;
-            res.json(response);
-        })
-        .catch((err) => {
-            sendError(err, res);
-        });
-
-    })
-});
 
 
 module.exports = router;

@@ -11,10 +11,12 @@ export class LoginComponent implements OnInit {
 
   password:string;
   email:string;
+  counter:number;
 
   users: Array<any>;
 
   constructor(public dataService:DataService, private router: Router) {
+    this.counter = 0;
   }
 
   ngOnInit() {
@@ -41,9 +43,15 @@ export class LoginComponent implements OnInit {
       } 
       // Its running this after every iteration. FIX IT!!
       else {
-        alert("That user does not exist");
-        this.router.navigate(['/']);
+        this.counter++;
       }
+    }
+
+    /* If the number of iterations is equal to the number of users,
+    the user does not exist */
+    if(this.counter == this.users.length) {
+      alert("That user does not exist");
+      this.router.navigate(['/']);
     }
   }
 
