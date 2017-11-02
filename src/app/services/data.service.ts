@@ -44,6 +44,9 @@ export class DataService {
   updateUser(user:User) {
     // Convert the user object to JSON
     let body = JSON.stringify(user);
+
+    console.log(body);
+    
     /* Create the headers to tell the API we are using
     JSON */
     let headers = new Headers({'Content-Type': 'application/json'});
@@ -51,7 +54,7 @@ export class DataService {
     let options = new RequestOptions({ headers: headers });
 
     // Make the request
-    return this._http.post("/api/users"+user.email, body, options)
+    return this._http.post("/api/users/"+user.email, body, options)
     .map((data:any) => data.json())
     .subscribe();
   }

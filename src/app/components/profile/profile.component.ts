@@ -91,17 +91,19 @@ export class ProfileComponent implements OnInit {
   }
 
   thought() {
-    console.log(this.currentThought);
     // Construct the user object.
     this.updatedUser = {
       firstName: this.dbUser["firstName"],
       lastName: this.dbUser["lastName"],
       email: this.dbUser["email"],
       password: this.dbUser["password"],
+      profile: this.dbUser["profile"],
+      background: this.dbUser["background"],
       currentThought: this.currentThought,
       about: this.dbUser["about"],
     }
 
-    console.log(this.updatedUser);
+    this.result = this.dataService.updateUser(this.updatedUser);
+    this.getUser();
   }
 }

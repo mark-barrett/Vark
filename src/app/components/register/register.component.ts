@@ -47,6 +47,8 @@ export class RegisterComponent implements OnInit {
       lastName: this.lastName,
       email: this.email,
       password: this.password,
+      profile: "http://www.informatics.illinois.edu/wp-content/uploads/2013/10/profile-placeholder.png",
+      background: "https://www.istockphoto.com/fi/vector/triangular-abstract-background-gm624878906-109926275?esource=SEO_GIS_CDN_Redirect",
       currentThought: "",
       about: "Nothing yet"
     }
