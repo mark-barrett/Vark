@@ -12,6 +12,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HttpModule } from '@angular/http';
 import { DataService } from './services/data.service';
 import { PostService } from './services/post.service';
+import { FriendService } from './services/friend.service';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { FriendsComponent } from './components/friends/friends.component';
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     DataService,
-    PostService
+    PostService,
+    FriendService
   ],
   bootstrap: [AppComponent]
 })

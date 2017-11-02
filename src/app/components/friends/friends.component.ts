@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { PostService } from '../../services/post.service';
+import { FriendService } from '../../services/friend.service';
 import { Post } from '../../models/Post';
 import { User } from '../../models/User';
 
@@ -37,7 +38,14 @@ export class FriendsComponent implements OnInit {
   // Found users
   foundUsers:Array<any> = [];
 
-  constructor(public dataService:DataService, public postService:PostService, private router: Router) { 
+  // Users friends
+  friendsFromDB:Array<any>;
+
+  // Actual friend objects
+  friends:Array<any> = [];
+
+  constructor(public dataService:DataService, public postService:PostService, private router: Router,
+  public friendService:FriendService) { 
     
     // Start Authentication Code
     this.user = sessionStorage.getItem("user");
@@ -58,6 +66,38 @@ export class FriendsComponent implements OnInit {
     // On the page load get all users so we can compare if the user exists
     this.dataService.getUsers()
     .subscribe(res => this.users = res);
+
+    // Lets get that users friends for listing!
+    this.friendService.getFriends(this.user)
+    .subscribe(res => this.friendsFromDB = res);
+
+    /* Now we must loop through these friends, take the column that
+    is not the logged in users and search the users for it and add it
+    to the friends array */
+    for(var i=0; i<this.friends.length; i++) {
+      // Check if the the logged in user is the first column.
+      if(this.friends["friend1"] == sessionStorage.getItem("user")) {
+        // Now that we know its the first column, the second column is the friends id.
+        for(var j=0; j<this.users.length; j++) {
+          // If that matches
+          if(this.users[j]._id == this.friends["friend2"]) {
+            // Push the user onto the friends array
+            this.friends.push(this.users[j]);
+          }
+        }
+      }
+      // If not its in the second.
+      else {
+        // Now that we know its the second, the first column is the friends id.
+        for(var j=0; j<this.users.length; j++) {
+          // If that matches
+          if(this.users[j]._id == this.friends["friend1"]) {
+            // Push the user onto the friends array
+            this.friends.push(this.users[j]);
+          }
+        }
+      }
+    }
   }
 
   getUser() {
