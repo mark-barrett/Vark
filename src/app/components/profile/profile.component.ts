@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { PostService } from '../../services/post.service';
+import { Post } from '../../models/Post';
 
 import { Router } from '@angular/router';
 
@@ -19,6 +20,17 @@ export class ProfileComponent implements OnInit {
   
   // Users posts from database
   dbPosts:any;
+
+  // Post body for new post
+  postBody:string;
+
+  // New post
+  postObj:Post;
+
+  result:any;
+
+  // Current thought
+  currentThought:string;
 
   constructor(public dataService:DataService, public postService:PostService, private router: Router) { 
     
@@ -44,8 +56,26 @@ export class ProfileComponent implements OnInit {
     // Get the users posts
     this.postService.getUserPosts(sessionStorage.getItem("user"))
     .subscribe(res => {
-      this.
+      this.dbPosts = res;
     })
+  }
+
+  post() {
+    // Create the post object
+    this.postObj = {
+      email: sessionStorage.getItem("user"),
+      body: this.postBody,
+      time: new Date().getMinutes().toString(),
+      date: new Date().toString()
+    }
+
+    // Post it to the API
+    this.result = this.postService.createPost(this.postObj);
+
+    // Notify the user.
+    alert("Post created successfully");
+    this.router.navigate(['/profile']);
+
   }
 
 

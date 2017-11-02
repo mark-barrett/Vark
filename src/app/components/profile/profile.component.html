@@ -59,7 +59,7 @@
          <div class="card">
            <div class="card-body">
              <div class="form-group">
-                 <textarea class="form-control" placeholder="Make a post.."></textarea>
+                 <textarea class="form-control" placeholder="Make a post.." name="postBody" [(ngModel)]="postBody"></textarea>
             </div>
             <div class="float-right">
               <input type="submit" value="Post" class="btn btn-secondary">
@@ -69,5 +69,23 @@
       </form>
       <br/>
       <h4>Your Posts:</h4>
+
+      <div *ngFor="let post of dbPosts">
+        <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <img src="{{dbUser.profile}}" width="40%" style="border-radius: 5px; margin-bottom: 5px;" /><br/>
+                  {{dbUser.firstName}} {{dbUser.lastName}}<br/>
+                  <small>{{post.time}} {{post.date}}</small>
+                </div>
+                <div class="col-md-8">
+                  <p class="lead">{{post.body}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br/>
+      </div>
 </div>
 </div>
