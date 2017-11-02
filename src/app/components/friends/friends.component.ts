@@ -34,6 +34,12 @@ export class FriendsComponent implements OnInit {
   // Search query
   friendSearch:string;
 
+  // Found users
+  foundUsers:Array<any> = [];
+
+  // Temp user
+  tempUser:User;
+
   constructor(public dataService:DataService, public postService:PostService, private router: Router) { 
     
   // Start Authentication Code
@@ -85,8 +91,10 @@ export class FriendsComponent implements OnInit {
   searchFriends() {
     // search the users for what was searched.
     for (var i = 0; i < this.users.length; i++) {
-      if(this.users[i]["email"] == this.user.email) {
-
+      // If the first name contains the search or the last name
+      if(this.users[i].firstName.toLowerCase().indexOf(this.friendSearch.toLowerCase()) >= 0
+      || this.users[i].lastName.toLowerCase().indexOf(this.friendSearch.toLocaleLowerCase()) >= 0) {
+        this.foundUsers.push(this.users[i]);
       }
     }
   }
