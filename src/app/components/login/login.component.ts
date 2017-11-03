@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         if(this.users[i]["password"] == this.password) {
           // Set the user session if its all okay!
           sessionStorage.setItem("user", this.email);
-          this.router.navigate(['/news-feed']);
+          this.router.navigate(['/profile']);
         }
         else {
           alert("The provided password is incorrect.");
